@@ -1,3 +1,4 @@
+
 const express= require('express');
 const router = express.Router();
 const User = require('../models/User');
@@ -25,7 +26,7 @@ router.post('/createuser',[
         let user= await User.findOne({email:req.body.email});
         if(user){
             return res.status(400)
-            .json({error:'sorry the user with this mail already exist'});
+            .json({error:'Account already exist, try logging in!'});
         }
         //hashing password using bcryptjs
         const salt = await bcrypt.genSalt(10);
